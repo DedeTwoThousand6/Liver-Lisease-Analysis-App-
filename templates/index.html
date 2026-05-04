@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liver AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<!-- WADAH ANIMASI -->
+<div class="animation-container">
+    <!-- Batch 1 -->
+    <i class="fas fa-stethoscope medical-icon i1"></i>
+    <i class="fas fa-syringe medical-icon i2"></i>
+    <i class="fas fa-pills medical-icon i3"></i>
+    <i class="fas fa-microscope medical-icon i4"></i>
+    <i class="fas fa-heartbeat medical-icon i5"></i>
+    <i class="fas fa-vial medical-icon i6"></i>
+    <i class="fas fa-user-md medical-icon i7"></i>
+    <i class="fas fa-tablets medical-icon i8"></i>
+    <i class="fas fa-dna medical-icon i9"></i>
+    <i class="fas fa-hospital medical-icon i10"></i>
+    <!-- Batch 2 (Ekstra Rame) -->
+    <i class="fas fa-briefcase-medical medical-icon i11"></i>
+    <i class="fas fa-thermometer medical-icon i12"></i>
+    <i class="fas fa-band-aid medical-icon i13"></i>
+    <i class="fas fa-first-aid medical-icon i14"></i>
+    <i class="fas fa-capsules medical-icon i15"></i>
+    <i class="fas fa-hand-holding-medical medical-icon i16"></i>
+    <i class="fas fa-notes-medical medical-icon i17"></i>
+    <i class="fas fa-flask medical-icon i18"></i>
+    <i class="fas fa-ambulance medical-icon i19"></i>
+    <i class="fas fa-prescriptions medical-icon i20"></i>
+</div>
+
+<nav class="navbar navbar-dark bg-transparent px-4">
+    <a class="navbar-brand fw-bold" href="#">
+        <i class="fas fa-laptop-medical text-warning me-2"></i>LPD <span class="text-white">AI-DIAGNOSTIC</span>
+    </a>
+</nav>
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10 text-center mb-4">
+            <h2 class="fw-bold text-white display-5">Liver Disease Prediction</h2>
+            <p class="text-white-50">Sistem Diagnosis Penyakit Liver Berbasis Neural Network Backpropagation</p>
+        </div>
+
+        <div class="col-lg-9">
+            <div class="card card-main-tosca p-4 shadow-lg">
+                <form action="/predict" method="post">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Age</label>
+                            <input type="number" step="any" name="Age" class="form-control custom-input" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Gender</label>
+                            <select name="Gender" class="form-select custom-input" required>
+                                <option value="1">Laki-laki</option>
+                                <option value="0">Perempuan</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Total Bilirubin</label>
+                            <input type="number" step="any" name="TB" class="form-control custom-input" required>
+                        </div>
+                        <!-- ... (Ulangi pola yang sama untuk input lainnya) ... -->
+                        <div class="col-md-4">
+                            <label class="form-label">Direct Bilirubin</label>
+                            <input type="number" step="any" name="DB" class="form-control custom-input" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Alk-Phosphate</label>
+                            <input type="number" step="any" name="AP" class="form-control custom-input" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Alamine-Amino</label>
+                            <input type="number" step="any" name="AA" class="form-control custom-input" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Aspartate-Amino</label>
+                            <input type="number" step="any" name="AsA" class="form-control custom-input" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Total Proteins</label>
+                            <input type="number" step="any" name="TP" class="form-control custom-input" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Albumin</label>
+                            <input type="number" step="any" name="ALB" class="form-control custom-input" required>
+                        </div>
+                        <div class="col-md-4 mx-auto text-center">
+                            <label class="form-label">A/G Ratio</label>
+                            <input type="number" step="any" name="AGR" class="form-control custom-input" required>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-warning btn-lg px-5 py-2 fw-bold rounded-pill shadow">
+                            ANALISIS SEKARANG
+                        </button>
+                    </div>
+                </form>
+
+                {% if prediction_text %}
+                <div class="mt-4 alert alert-{{status}} text-center border-0 shadow">
+                    <h3 class="fw-bold mb-0">{{ prediction_text }}</h3>
+                    <small>{{ prob }}</small>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

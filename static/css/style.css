@@ -1,0 +1,87 @@
+body {
+    background: linear-gradient(135deg, #11998e, #38ef7d);
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+    font-family: sans-serif;
+}
+
+/* KONTINER ANIMASI */
+/* 1. KONTAINER */
+.animation-container {
+    position: fixed;
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    z-index: 1; 
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* 2. BASE STYLE ICON - Dipertegas Kejelasannya */
+.medical-icon {
+    position: absolute;
+    color: #ffffff;
+    bottom: -150px;
+    z-index: 1;
+    /* Opacity dasar lebih tinggi agar jelas terlihat */
+    opacity: 0.5 !important; 
+    /* Efek Glow & Shadow agar ikon 'pop-out' dari background tosca */
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 15px rgba(0, 0, 0, 0.2));
+}
+
+/* 3. UKURAN LEBIH KECIL & KECEPATAN BERVARIASI */
+/* Ukuran sekarang berkisar 2rem sampai 4rem (Lebih ramping) */
+
+.i1  { left: 4%;  font-size: 3.5rem; animation: floatUpRight 28s linear infinite; animation-delay: 0s; }
+.i2  { left: 14%; font-size: 2.2rem; animation: floatUpLeft 16s linear infinite;  animation-delay: 4s; }
+.i3  { left: 24%; font-size: 4.0rem; animation: floatUpRight 35s linear infinite; animation-delay: 2s; }
+.i4  { left: 34%; font-size: 2.8rem; animation: floatUpLeft 20s linear infinite;  animation-delay: 8s; }
+.i5  { left: 44%; font-size: 3.8rem; animation: floatUpRight 30s linear infinite; animation-delay: 15s; }
+.i6  { left: 54%; font-size: 2.0rem; animation: floatUpLeft 14s linear infinite;  animation-delay: 5s; }
+.i7  { left: 64%; font-size: 3.6rem; animation: floatUpRight 24s linear infinite; animation-delay: 10s; }
+.i8  { left: 74%; font-size: 2.5rem; animation: floatUpLeft 18s linear infinite;  animation-delay: 3s; }
+.i9  { left: 84%; font-size: 4.2rem; animation: floatUpRight 38s linear infinite; animation-delay: 6s; }
+.i10 { left: 94%; font-size: 2.8rem; animation: floatUpLeft 22s linear infinite;  animation-delay: 1s; }
+
+/* Batch Kedua (Mengisi celah dengan delay tinggi) */
+.i11 { left: 9%;  font-size: 2.5rem; animation: floatUpRight 26s linear infinite; animation-delay: 12s; }
+.i12 { left: 29%; font-size: 3.2rem; animation: floatUpLeft 21s linear infinite;  animation-delay: 18s; }
+.i13 { left: 49%; font-size: 2.2rem; animation: floatUpRight 17s linear infinite; animation-delay: 22s; }
+.i14 { left: 69%; font-size: 3.0rem; animation: floatUpLeft 29s linear infinite;  animation-delay: 14s; }
+.i15 { left: 89%; font-size: 2.4rem; animation: floatUpRight 15s linear infinite; animation-delay: 11s; }
+
+/* 4. ANIMASI BERBEDA ARAH */
+@keyframes floatUpRight {
+    0%   { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-150vh) rotate(360deg); }
+}
+
+@keyframes floatUpLeft {
+    0%   { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-150vh) rotate(-360deg); }
+}
+
+/* 5. FORM STYLE */
+.card-main-tosca {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 25px;
+    z-index: 10;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.form-label { color: white; font-weight: bold; font-size: 0.9rem; }
+
+.custom-input {
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.custom-input:focus {
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+    transform: scale(1.02);
+}
